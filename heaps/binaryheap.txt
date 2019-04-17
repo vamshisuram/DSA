@@ -1,0 +1,6 @@
+
+COMPLETE TREE
+- all levels are filled except possibly the last level
+- last level keys are as left as possible
+
+

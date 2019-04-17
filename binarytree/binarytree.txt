@@ -1,0 +1,58 @@
+unlike Arrays, Lists, Queues, Stacks (linear structures), trees are hierachial structures.
+
+ATMOST 2 children - binarytree.
+
+root
+children
+left
+right
+no-children-elements => leaves
+
+why?
+- best suited for naturally hierachical data - file system
+- easy to search
+- business decisions
+- composting digital images for visual effects
+- modify sorted lists
+- ROUTER Algorithms?
+
+FULL BT
+- every node has 0 or 2 children
+- leaves NEED NOT BE at same level
+
+COMPLETE
+- all levels are complete but last one.
+- leaves NEED NOT BE at same level
+
+PERFECT
+- internal nodes have 2 children
+- leaves are at same level
+(Example of a Perfect binary tree is ancestors in the family. 
+Person - root, parents - children nodes, grandparents - childchildren nodes)
+
+BALANCED
+- height is O(log n)
+AVL tree maintains it by making sure the diff in left/right heights is 1.
+RB tree - count of black nodes from root to leaves is same, and no adj. red nodes
+
+DEGENERATE / PATHOLOGICAL
+- internal nodes have 1 child
+- performs like linked list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

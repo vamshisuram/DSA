@@ -1,0 +1,26 @@
+
+Arrays 
+- fixed size
+- if size over - adding an element needs creation of new array.
+
+LinkedList
+- not contiguous, can't random access 
+- not cache friendly (how cache works?)
+- extra memory for next node link
+
+API
+- printList
+
+Underlying data storage implementation?
+- use array to store data  // since we are coming from -ve side of Array, don't use this.
+- add - just array.push
+- remove - loop and splice
+- print - loop and print
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+push
+pop
+peek/top
+size
+
+FILO, LIFO
+
+Cannot randomly delete any node using data - if you are using LinkedList to implement.
+
+We are not coming from -ve of Array to this. This is just a concept - helpful in various executions.
+

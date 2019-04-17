@@ -1,0 +1,13 @@
+
+parent val is always > or < than the children
+
+we can implement this using linkedlist also, have extra property like weightage/priority
+
+priority queue
+- we remove the first element always. O(1)
+- but insertion takes O(n) - just like routine.
+
+Heap is the most efficient data structure when we want to store/maintain data which maintains order.
+
+
+
