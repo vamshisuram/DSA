@@ -9,61 +9,72 @@ class Node {
 
 class BinaryHeap {
     constructor() {
-        this.root = null;
+        this.dataStore = [];
+        // If a given node is located at index 'x' in the array, its left child exists at
+        // index = 2x, and its right child exists at index = 2x + 1.  Each node's parent exists
+        // at index = x / 2(rounded down).
     }
-
     insert(data) {
-        // we place data at the last place and do heapify?
-
+        this.dataStore.push(data);
+        this.heapify();
     }
-
-    insertOld(data) {
-        const initialData = data;
-
-        const insert = (data, node) => {
-            if (!this.root) {
-                this.root = new Node(data);
-                console.log("SUCCESS - data added: ", initialData);
+    heapify() {
+        if (this.dataStore.length <= 1) {
+            return;
+        }
+        let currIndex = this.dataStore.length - 1;
+        while (currIndex >= 1) {
+            let parentIndex = Math.floor(currIndex / 2);
+            if (this.dataStore[currIndex] > this.dataStore[parentIndex]) {
+                [this.dataStore[currIndex], this.dataStore[parentIndex]] = [this.dataStore[parentIndex], this.dataStore[currIndex]];
+                [currIndex, parentIndex] = [parentIndex, currIndex];
+            } else {
+                break;
             }
-            if (!node) {
-                node = this.root;
-            }
-            if (data > node.data) {
-                [data, node.data] = [node.data, data];
-            }
-            // now data is less.
-            if (!node.left) {
-                node.left = new Node(data);
-                console.log("SUCCESS - data added: ", initialData);
-                return;
-            }
-
-            if (!node.right) {
-                node.right = new Node(data);
-                return;
-            }
-            // FIX - how to identify if I am overloading left side of the heap?
-            insert(data, node.left);
-        };
-        insert(data);
+        }
     }
+    print() {
+        console.log(this.dataStore.toString());
+    }
+    pop() {
+        this.remove(this.dataStore[0]);
+    }
+    remove(data) {
+        // find index
+        // replace last, shrink array
 
-    printlist(node) {
-        if (!this.root) {
-            console.log("ERROR - Trying to print empty heap");
+        // that index is parentIndex, childIndexes = 2(i), 2(i)+1
+        // as long as 2i+1 less than array index, compare parentIndex val, childIndex val and swap.
+        let position = this.dataStore.indexOf(data);
+        this.dataStore[position] = this.dataStore[this.dataStore.length - 1];
+        this.dataStore = this.dataStore.slice(0, this.dataStore.length - 1);
+
+        let parentIndex = position;
+        let getLeftChildIndex = () => 2 * parentIndex;
+        let getRightChildIndex = () => 2 * parentIndex + 1;
+        while (getRightChildIndex() <= this.dataStore.length - 1) {
+            if (this.dataStore[parentIndex] < this.dataStore[getLeftChildIndex()]) {
+                [this.dataStore[parentIndex], this.dataStore[getLeftChildIndex()]] = [this.dataStore[getLeftChildIndex()], this.dataStore[parentIndex]];
+                parentIndex = getLeftChildIndex();
+            }
+            if (this.dataStore[parentIndex] < this.dataStore[getRightChildIndex()]) {
+                [this.dataStore[parentIndex], this.dataStore[getRightChildIndex()]] = [this.dataStore[getRightChildIndex()], this.dataStore[parentIndex]];
+                parentIndex = getRightChildIndex();
+            }
         }
-        if (!node) {
-            node = this.root;
-        }
-        console.log(node.data);
     }
 }
 
 const bh = new BinaryHeap();
-bh.insert(50);
-bh.insert(20);
-bh.insert(10);
-bh.insert(200);
-bh.insert(30);
-bh.insert(10);
+bh.insert(2);
+bh.insert(3);
+bh.insert(6);
+bh.insert(4);
+bh.insert(7);
+bh.insert(9);
+
+bh.print();  // Expected - 9 7 6 4 2 3
+
+bh.pop();
+bh.print();
 

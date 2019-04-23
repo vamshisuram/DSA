@@ -1,7 +1,9 @@
-
-parent val is always > or < than the children
+Rules
+- parent val is always > or < than the children
+- every level must be full. (that's why when node gets removed, we pick the leafy last one to replace the root & rearrange)
 
 we can implement this using linkedlist also, have extra property like weightage/priority
+- for now, the value can be used as an alias for priority
 
 priority queue
 - we remove the first element always. O(1)
@@ -9,5 +11,16 @@ priority queue
 
 Heap is the most efficient data structure when we want to store/maintain data which maintains order.
 
+If a given node is located at index 'x' in the array, its left child exists at
+index = 2x, and its right child exists at index = 2x + 1.  Each node's parent exists
+at index = x / 2 (rounded down).
+
+
+when new node add
+- add at last of array
+- check if it's parent val is > or <
+- swap values
+- continue with current's parent, swap if needed.
+- until you run out of parents/ parent val is already greater.
 
 
